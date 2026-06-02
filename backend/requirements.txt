@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+websockets
+pydantic
+redis
+celery
+python-dotenv
+torch
+torchvision
+qdrant-client
+neo4j
+langchain
+openai
