@@ -11,3 +11,5 @@ qdrant-client
 neo4j
 langchain
 openai
+numpy
+chess
