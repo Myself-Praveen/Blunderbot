@@ -13,3 +13,6 @@ langchain
 openai
 numpy
 chess
+zstandard
+requests
+tqdm
