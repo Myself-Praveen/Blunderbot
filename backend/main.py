@@ -68,3 +68,30 @@ async def websocket_endpoint(websocket: WebSocket):
             
     except WebSocketDisconnect:
         manager.disconnect(websocket)
+
+import time
+try:
+    from similarity import get_nearest_neighbors
+except ImportError:
+    pass # Handle relative import in dev
+
+@app.get("/api/v1/test_vector_latency")
+async def test_vector_latency():
+    """
+    Tests the semantic search retrieval latency against Qdrant.
+    """
+    start_time = time.time()
+    
+    # Generate a dummy 128-d latent embedding to test retrieval speed
+    dummy_query = [0.0] * 128 
+    
+    try:
+        results = get_nearest_neighbors(dummy_query, limit=5)
+        latency_ms = (time.time() - start_time) * 1000
+        return {
+            "status": "success", 
+            "latency_ms": round(latency_ms, 2),
+            "hits": len(results)
+        }
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
