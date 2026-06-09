@@ -16,3 +16,7 @@ chess
 zstandard
 requests
 tqdm
+langchain
+langchain-core
+langchain-openai
+python-dotenv
